@@ -57,17 +57,17 @@ update_conf_file() {
     local view=$1
     local scale=$2
     local component=$3
-    local count=$4
-    
+    local count=$4 
+
 
     if [[ $view == "auction" ]]; then
-        view="vdopiasample"
+       view="vdopiasample"
     else
-        view="vdopiasample-bid"
+       view="vdopiasample-bid"
     fi
 
     # Construct the configuration line with variable values
-    local config_line="$view_keyword ; $scale ; $component ; ETL ; vdopia-etl= $count"
+    local config_line="$view ; $scale ; $component  ; vdopia-etl= $count"
 
     # Append the configuration line to the end of the file
     echo "$config_line" > sig.conf
@@ -109,7 +109,7 @@ for ((i=1; i<=3; i++)); do
 done
 
 for ((i=1; i<=3; i++)); do
-    echo "Enter View [Auction/Bid]: "
+    echo "Enter View [auction/bid]: "
     read view
     if validate_view "$view"; then
         break
